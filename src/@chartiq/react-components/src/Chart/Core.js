@@ -18,14 +18,6 @@ import { getCustomConfig } from "./resources"; // ChartIQ library resources
 
 export { CIQ };
 
-/**
- * This is a fully functional example showing how to load a chart with complete user interface.
- *
- * @export
- * @class Core
- * @extends {React.Component}
- */
-
 const Core = (props) => {
 	const [stx, setStx] = useState(null);
 	const container = useRef();
