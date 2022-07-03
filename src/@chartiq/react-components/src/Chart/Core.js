@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 // Import necessary ChartIQ library files
 import { CIQ } from "chartiq/js/standard";
 import "chartiq/js/components";
+import "chartiq/js/componentUI";
 import "chartiq/js/addOns";
 
 import ChartTemplate from "./Template";
@@ -26,56 +27,47 @@ export { CIQ };
  */
 
 const Core = (props) => {
-	const [chart, setChart] = useState(new CIQ.UI.Chart());
 	const [stx, setStx] = useState(null);
-	const [config, setConfig] = useState();
 	const container = useRef();
 	const loading = useRef(true);
+	const { config, resources, chartInitialized } = props;
+	const configObj = getCustomConfig({ resources });
+	CIQ.extend(config, configObj)
+
+	// dev settings
+	config.quoteFeeds[0].behavior.refreshInterval = 0
+	config.themes.defaultTheme = "ciq-night"
+	config.restore = false
+
+	const [chart] = useState(new CIQ.UI.Chart());
 
 	useEffect(() => {
-
 		if (loading.current) {
-			const { config, resources, chartInitialized } = props;
-			const configObj = getCustomConfig({ resources });
-			CIQ.extend(config, configObj)
 
-			// dev settings
-			config.quoteFeeds[0].behavior.refreshInterval = 0
-			config.themes.defaultTheme = "ciq-night"
-			config.restore = false
-
-			setConfig(config)
-
-			const uiContext = chart.createChartAndUI({ container: container.current, config });
-			uiContext.stx.ID = new Date().toISOString()
-
-			setStx(uiContext.stx)
-			setChart(uiContext)
+			const stx = chart.createChartAndUI({ container: container.current, config }).stx
+			const uiContext = stx.uiContext
+			setStx(stx)
 
 			if (chartInitialized) {
-				chartInitialized({ chartEngine: uiContext.stx, uiContext });
+				chartInitialized({ chartEngine: stx, uiContext });
 				loading.current = false
 			}
 		}
-
-
-
 		return () => {
 			if (stx) {
-				console.log('destroying again ', stx.ID)
-				// uiContext.stx.container.remove()
 				stx.destroy();
 				stx.draw = () => { };
 				setStx(null)
-				// uiContext.stx = null;
 			}
 		}
 	}, [])
 
 	return (
-		<cq-context ref={container}>
-			{props.children || <ChartTemplate config={config} />}
-		</cq-context>
+		<div>
+			<cq-context ref={container}>
+				{props.children || <ChartTemplate config={config} />}
+			</cq-context>
+		</div>
 	);
 }
 

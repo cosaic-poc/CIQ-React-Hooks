@@ -1,6 +1,7 @@
 export default function ChartTemplate({ config, pluginToggles }) {
   return (
-    <cq-context className="ciq-night"><cq-chart-instructions role="contentinfo"></cq-chart-instructions>
+    <>
+      <cq-chart-instructions role="contentinfo"></cq-chart-instructions>
       <cq-color-picker></cq-color-picker>
 
       <div className="ciq-nav full-screen-hide" role="navigation">
@@ -257,6 +258,6 @@ export default function ChartTemplate({ config, pluginToggles }) {
       </cq-dialogs>
 
       <cq-side-panel></cq-side-panel>
-    </cq-context>
+    </>
   )
 }
