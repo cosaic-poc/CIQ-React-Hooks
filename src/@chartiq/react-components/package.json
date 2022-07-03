@@ -1,0 +1,73 @@
+{
+  "_from": "@chartiq/react-components",
+  "_id": "@chartiq/react-components@8.6.1",
+  "_inBundle": false,
+  "_integrity": "sha512-VqOg469l8EFLpnAi4XwoFQ28ljbWh4loiAVH1rL+Y20WllkiSJwRxrQjFkb7xWCAIHmy1t+dpYQMdENlg8eoFQ==",
+  "_location": "/@chartiq/react-components",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@chartiq/react-components",
+    "name": "@chartiq/react-components",
+    "escapedName": "@chartiq%2freact-components",
+    "scope": "@chartiq",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@chartiq/react-components/-/react-components-8.6.1.tgz",
+  "_shasum": "5a9d1c3b69776e0885883cd344e8edf751298e67",
+  "_spec": "@chartiq/react-components",
+  "_where": "/Users/sonylnagale/Downloads/balyasny-8.7.0-3a1883d8/bam-ciq",
+  "author": {
+    "name": "ChartIQ"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "React Components for ChartIQ library",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "files": [
+    "Chart/",
+    "Advanced/",
+    "ActiveTrader/",
+    "CrossSection",
+    "src/"
+  ],
+  "keywords": [
+    "component",
+    "react",
+    "charts",
+    "chartiq"
+  ],
+  "main": "index.js",
+  "name": "@chartiq/react-components",
+  "scripts": {
+    "build": "babel src -d . --copy-files --source-maps inline",
+    "build:prod": "babel src -d . --copy-files",
+    "clean": "rm -rf Chart/ Advanced/ styles/ ActiveTrader/ CrossSection/ node_modules/",
+    "prepublish": "npm run build:prod",
+    "watch": "babel src -d . -w --copy-files --source-maps inline"
+  },
+  "version": "8.6.1"
+}

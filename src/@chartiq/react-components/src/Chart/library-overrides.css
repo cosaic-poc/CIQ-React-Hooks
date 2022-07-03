@@ -1,0 +1,25 @@
+body {
+  -ms-touch-action: none;
+  /* Necessary for windows mobile devices */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* These can be removed or changed to suit your needs */
+  background: #f8f8f8;
+  color: #666;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+input {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+
+  font-weight: 300;
+  color: #071931;
+}
